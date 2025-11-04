@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
 :root{
-  @apply bg-neutral-950;
+  @apply bg-neutral-900;
 }
 
 #root{
-  @apply  w-1/2 h-full flex flex-col justify-center items-center;
+  @apply  w-1/2 h-full flex flex-col justify-center items-center relative;
+}
+
+#loading{
+  @apply bg-slate-500 w-[300px] h-[300px] rounded-4xl absolute top-11/12;
+  animation: pulse 2s ease-in-out infinite, spin 3s ease infinite
 }

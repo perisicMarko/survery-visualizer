@@ -27,7 +27,7 @@ export default function QuestionList({
       </div>
       <div className="w-full bg-slate-500 text-white rounded-4xl p-2 mt-5 transition-all">
         <select
-          className="selection:outline-0 focus:outline-0 rounded-2xl hover:text-neutral-900 transition-all cursor-pointer"
+          className="selection:outline-0 focus:outline-0 rounded-2xl text-center hover:text-neutral-900 transition-all cursor-pointer"
           onChange={(e) => setFilterByDifficulty(e.target.value)}
         >
           <option value="" className="bg-neutral-900 text-slate-500">
@@ -46,7 +46,7 @@ export default function QuestionList({
       </div>
       {questions.map((q) => {
         return (
-          <div className="bg-slate-500 text-white rounded-4xl m-5 w-full p-5">
+          <div className="bg-slate-500 text-white rounded-4xl m-5 w-full p-5" key={q.question}>
             <span>Difficulty:</span>{" "}
             <span className="text-neutral-900">{q.difficulty}</span>
             <br />

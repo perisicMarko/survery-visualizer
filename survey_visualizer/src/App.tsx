@@ -1,55 +1,42 @@
 import { useState } from "react";
 import "./App.css";
-import { useEffect } from "react";
 import "../utils/types";
 import type { question } from "../utils/types";
 import "../utils/data";
-import { saved_data } from "../utils/data";
 import CategoryList from "../components/CategoryList/index";
 import QuestionList from "../components/QuestionList/index";
+import FrequencyChart from "../components/Charts/FrequencyChart.tsx";
+import useData from "../utils/customHooks/useData.ts";
+import Loading from "../utils/loading.tsx";
+
+const API_URL = "https://opentdb.com/api.php?amount=50&encode=url3986";
 
 function App() {
-  const [data, setData] = useState<question[]>([]);
+  const data = useData(API_URL);
   const [questionsCategory, setQuestionsCategory] = useState<string>("");
-
-  useEffect(() => {
-    const fetchApi = async () => {
-      const res = saved_data;
-      // decode encoded strings
-      setData(
-        res.results.map((q) => ({
-          ...q,
-          question: decodeURIComponent(q.question),
-          category: decodeURIComponent(q.category),
-          correct_answer: decodeURIComponent(q.correct_answer),
-          incorrect_answers: q.incorrect_answers.map((a) =>
-            decodeURIComponent(a)
-          ),
-        })) as question[]
-      );
-    };
-    fetchApi();
-  }, []);
-
   // retrieve categories
   let categories: string[] = data
     .filter((e): e is question => e !== undefined && e !== null)
     .map((q) => q!.category);
-  categories = categories.filter(
-    (value, index) => categories.indexOf(value) === index
-  );
+  categories = categories
+    .filter((value, index) => categories.indexOf(value) === index)
+    .sort();
 
-
-  return questionsCategory === "" ? ( // if no category is selected, show them all, else list questions from picked category
-    <CategoryList
-      categories={categories}
-      setCategory={(c : string) => setQuestionsCategory(c)}
-    />
+  return data.length === 0 ? ( // empty state animation
+    <Loading />
+  ) : questionsCategory === "" ? ( // data is loaded, if no category is selected, show them all, else list questions from picked category
+    <>
+      <CategoryList
+        categories={categories}
+        setCategory={(c: string) => setQuestionsCategory(c)}
+      />
+      <FrequencyChart data={data} />
+    </>
   ) : (
     <QuestionList
       category={questionsCategory}
       questionsByCategory={data.filter((q) => q.category === questionsCategory)}
-      setCategory={(c : string) => setQuestionsCategory(c)}
+      setCategory={(c: string) => setQuestionsCategory(c)}
     />
   );
 }
