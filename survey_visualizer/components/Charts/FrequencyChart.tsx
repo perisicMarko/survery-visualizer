@@ -33,7 +33,7 @@ export default function FrequencyRadar({ data }: { data: question[] }) {
       className="flex justify-center items-center"
     >
       <span
-        className="opacity-30 hover:opacity-100 text-slate-500 ml-10 cursor-pointer scale-150"
+        className="opacity-30 hover:opacity-100 text-cyan-600 ml-10 cursor-pointer scale-150"
         onClick={() => {
           if (statisticsType === StatisticsTypeValues.NumberOfQuestions)
             setStatisticsType(StatisticsTypeValues.TrueFalseQuestionNumber);
@@ -61,7 +61,7 @@ export default function FrequencyRadar({ data }: { data: question[] }) {
         </ResponsiveContainer>
       </div>
       <span
-        className=" opacity-30 hover:opacity-100 text-slate-500 mr-10 cursor-pointer scale-150"
+        className=" opacity-30 hover:opacity-100 text-cyan-600 mr-10 cursor-pointer scale-150"
         onClick={() => {
           if (statisticsType === StatisticsTypeValues.TrueFalseQuestionNumber)
             setStatisticsType(StatisticsTypeValues.NumberOfQuestions);
