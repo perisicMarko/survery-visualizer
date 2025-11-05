@@ -6,7 +6,7 @@ export default function Categories({
   categories: string[];
 }) {
   return (
-    <div className="bg-cyan-500 text-white rounded-4xl py-1 w-full flex flex-col items-center">
+    <div className="bg-cyan-500 text-white rounded-4xl py-1 w-full grid grid-cols-2 items-center justify-items-center">
       {categories.map((c) => {
         return (
           <div
