@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import "../utils/types";
 import type { question } from "../utils/types";
-import "../utils/data";
 import CategoryList from "../components/CategoryList/index";
 import ShowCategory from "../components/ShowCategory/index";
 import FrequencyChart from "../components/Charts/FrequencyChart.tsx";

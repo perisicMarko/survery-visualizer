@@ -28,12 +28,9 @@ export default function FrequencyRadar({ data }: { data: question[] }) {
   }
 
   return (
-    <div
-      style={{ width: "100%", height: 400 }}
-      className="flex justify-center items-center"
-    >
+    <div className="flex justify-center items-center w-full h-[400px] relative">
       <span
-        className="opacity-30 hover:opacity-100 text-cyan-600 ml-10 cursor-pointer scale-150"
+        className="opacity-50 sm:opacity-30 hover:opacity-100 text-cyan-600 absolute sm:left-30 left-0 cursor-pointer scale-150 z-10"
         onClick={() => {
           if (statisticsType === StatisticsTypeValues.NumberOfQuestions)
             setStatisticsType(StatisticsTypeValues.TrueFalseQuestionNumber);
@@ -42,7 +39,7 @@ export default function FrequencyRadar({ data }: { data: question[] }) {
       >
         <ChevronLeft />
       </span>
-      <div style={{ flex: 1, minWidth: 0, height: "100%" }}>
+      <div className="min-w-0 h-full flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart data={chartData} outerRadius="70%">
             <PolarGrid />
@@ -61,7 +58,7 @@ export default function FrequencyRadar({ data }: { data: question[] }) {
         </ResponsiveContainer>
       </div>
       <span
-        className=" opacity-30 hover:opacity-100 text-cyan-600 mr-10 cursor-pointer scale-150"
+        className="opacity-50 sm:opacity-30 hover:opacity-100 text-cyan-600 absolute sm:right-30 right-0 cursor-pointer scale-150 z-10"
         onClick={() => {
           if (statisticsType === StatisticsTypeValues.TrueFalseQuestionNumber)
             setStatisticsType(StatisticsTypeValues.NumberOfQuestions);

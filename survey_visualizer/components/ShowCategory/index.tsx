@@ -20,7 +20,7 @@ export default function QuestionList({
 
   return (
     <>
-      <div className="w-full bg-cyan-500 text-white rounded-4xl p-2">
+      <div className="w-full bg-cyan-500 text-white rounded-4xl sm:p-2">
         <h2 className="text-center w-full">{category}</h2>
         <span
           onClick={() => setCategory("")}
@@ -29,7 +29,7 @@ export default function QuestionList({
           Back to categories
         </span>
       </div>
-      <div className="w-full bg-cyan-500 text-white rounded-4xl p-5 mt-5 transition-all">
+      <div className="w-full bg-cyan-500 text-white rounded-4xl p-2 sm:p-5 mt-5 transition-all">
         <select
           className="selection:outline-0 focus:outline-0 rounded-2xl text-center hover:text-neutral-950 transition-all cursor-pointer"
           onChange={(e) => setFilterByDifficulty(e.target.value)}

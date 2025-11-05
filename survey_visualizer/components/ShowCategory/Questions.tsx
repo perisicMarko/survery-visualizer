@@ -8,7 +8,7 @@ export default function Questions({questions, filterByDifficulty} : {questions :
         questions.map((q) => {
           return (
             <div
-              className="bg-cyan-500 text-white rounded-4xl m-5 w-full p-5"
+              className="bg-cyan-500 text-white rounded-4xl m-5 w-full p-2 sm:p-5"
               key={q.question}
             >
               <span>Difficulty:</span>{" "}
@@ -31,7 +31,7 @@ export default function Questions({questions, filterByDifficulty} : {questions :
           );
         })
       ) : (
-        <div className="bg-cyan-500 text-center p-5 m-5 w-full rounded-4xl">
+        <div className="bg-cyan-500 text-center p-2 sm:p-5 m-5 w-full rounded-4xl">
           There are no {filterByDifficulty} questions.
         </div>
       )}
